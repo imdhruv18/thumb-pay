@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="thumbpay" EntityNamespace="ThumbpayContext" ContextNamespace="ThumbpayContext" Class="ThumbpayDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="15184c9d-e4d5-42a1-8491-3fd3f250dd4a" Provider="Devart.Data.SqlServer.Linq.Provider.SqlDataProvider, Devart.Data.SqlServer.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=LAPTOP-5STBRP5F;Initial Catalog=thumbpay;Integrated Security=True;Persist Security Info=True" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BankDetails" Member="BankDetails">
+    <Type Name="BankDetail" ed:Guid="fa797e59-f758-427d-9cbf-958ce5e58c5f">
+      <Column Name="BankId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="a34bfc1d-5803-4a2f-bcdc-0986cace6a62" />
+      <Column Name="UserId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="9ab4388b-29c4-4ad2-a39b-a636a68e1b27" />
+      <Column Name="AccountHolderName" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="79ea575d-d180-46d4-a4b7-1423744d59f0" />
+      <Column Name="BankName" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3bbb8016-f03f-4a59-bfdd-ce66cacdc1de" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e98da737-33c7-4c64-89fc-e2ed00ddc82a" />
+      <Column Name="IFSC_Code" Member="IFSCCode" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="a1f7e01b-26e4-4e7d-93e0-35f33013541b" />
+      <Column Name="TotalBalance" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" Precision="10" ed:ValidateRequired="false" ed:Guid="dcfe8239-d9cd-4695-b71b-b686ff68b5b8" />
+      <Association Name="UserDetail_BankDetail" ed:AssociationGuid="3035cba5-99a9-4034-bd42-3289e640b1c6" Member="UserDetail" ed:Guid="045a4304-11be-4270-bb54-ad296537c274" ThisKey="UserId" OtherKey="UserId" Type="UserDetail" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CardDetails" Member="CardDetails">
+    <Type Name="CardDetail" ed:Guid="fbeba246-10e0-4341-a6cd-0e4596d6afa9">
+      <Column Name="CardId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="633a4992-3e53-49f0-9e7f-e8aa9047d642" />
+      <Column Name="UserId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="ee8e0095-ea2c-4df3-b52f-292a52610c73" />
+      <Column Name="CardNumber" Type="System.String" DbType="NVARCHAR(50)" CanBeNull="true" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="637fa706-291b-45bc-ab79-9279a4742385" />
+      <Column Name="EXdate" Type="System.String" DbType="NVARCHAR(50)" CanBeNull="true" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="065b04a4-bcf7-4a5a-8954-b2c672b24b41" />
+      <Column Name="cvv" Member="Cvv" Type="System.String" DbType="NVARCHAR(50)" CanBeNull="true" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="42bdf341-e5e5-42dd-9746-973e9d2c0bff" />
+      <Column Name="HolderName" Type="System.String" DbType="NVARCHAR(50)" CanBeNull="true" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="a459ebf0-fca7-4d00-b612-75a2b97c0867" />
+      <Column Name="TotalBalance" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" Precision="10" ed:ValidateRequired="false" ed:Guid="76c32892-164d-4906-a07e-295b62db8f5d" />
+      <Association Name="UserDetail_CardDetail" ed:AssociationGuid="5cc354a1-0dc0-4e69-9210-4650e9d6042e" Member="UserDetail" ed:Guid="3bb760e0-c6c0-462d-b317-1b710502965d" ThisKey="UserId" OtherKey="UserId" Type="UserDetail" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FingerDetails" Member="FingerDetails">
+    <Type Name="FingerDetail" ed:Guid="7dbf700d-d1d4-43e5-88c0-8f21e5e7baef">
+      <Column Name="FingerId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="40d88969-98b6-4bd3-8667-3d9065ebf9ec" />
+      <Column Name="UserId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="1d4888b7-14fd-4c26-bef5-030e124753ed" />
+      <Column Name="FingerData" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="48de0e1e-3495-429f-a54f-4c1cb9410e7b" />
+      <Association Name="UserDetail_FingerDetail" ed:AssociationGuid="c26815af-7915-445b-be53-b33145fd4623" Member="UserDetail" ed:Guid="da8447d6-9e73-48a1-9fde-6a1fd23a145e" ThisKey="UserId" OtherKey="UserId" Type="UserDetail" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionDetails" Member="TransactionDetails">
+    <Type Name="TransactionDetail" ed:Guid="342395bb-de1c-4064-bc5a-d34f9df98191">
+      <Column Name="TransactionId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="69de75dc-7d4a-4d63-8682-5fe6810a5b20" />
+      <Column Name="UserSenderId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="35e86d33-c977-4b81-bacb-a7763e0bf298" />
+      <Column Name="UserReciverId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="6f5e1823-3dbf-400e-ba7d-e90f903efed9" />
+      <Column Name="Amount" Type="System.Int64" DbType="BIGINT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="19" ed:ValidateRequired="true" ed:Guid="222aa73c-3e44-41c2-8bff-e3cca1bed966" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DATETIME NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d26ccac4-c54f-4b3f-a793-78d7eddafaa6" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserDetails" Member="UserDetails">
+    <Type Name="UserDetail" ed:Guid="477a6aa1-2a82-47ac-aaa7-01c65ee29a4b">
+      <Column Name="UserId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="2da0ed38-3ad2-46ed-94bf-8cac6b93842f" />
+      <Column Name="UserTypeId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="10" ed:ValidateRequired="true" ed:Guid="a0081885-8412-4bb1-a68d-2da2185ede31" />
+      <Column Name="Fname" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="cfa75215-7b55-4256-b5c9-96b9818ed861" />
+      <Column Name="Lname" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9522d0e7-a990-43bd-a67b-7ad69569f89b" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="92aa76e4-c5e5-434b-86aa-c5b86de834c6" />
+      <Column Name="Email" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d72c9621-b97c-421e-8d99-6a99f066c854" />
+      <Column Name="Password" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="eb668c69-d905-4af9-9394-ecaa37d16389" />
+      <Association Name="UserDetail_BankDetail" ed:AssociationGuid="3035cba5-99a9-4034-bd42-3289e640b1c6" Member="BankDetails" ed:Guid="5c94cd87-e980-4b83-91b3-97e4e5939a71" ThisKey="UserId" OtherKey="UserId" Type="BankDetail" />
+      <Association Name="UserDetail_CardDetail" ed:AssociationGuid="5cc354a1-0dc0-4e69-9210-4650e9d6042e" Member="CardDetails" ed:Guid="4a00f91c-2d79-4de7-bc5d-c627c78f7167" ThisKey="UserId" OtherKey="UserId" Type="CardDetail" />
+      <Association Name="UserDetail_FingerDetail" ed:AssociationGuid="c26815af-7915-445b-be53-b33145fd4623" Member="FingerDetails" ed:Guid="b021eed8-3f16-4864-ade0-f670e8111584" ThisKey="UserId" OtherKey="UserId" Type="FingerDetail" />
+      <Association Name="UserType_UserDetail" ed:AssociationGuid="4334eaad-0efd-4f3e-89da-9c4edaba3995" Member="UserType" ed:Guid="c4cba484-0da3-446c-8a0e-371788b77429" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="UserType" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserType" Member="UserTypes">
+    <Type Name="UserType" ed:Guid="8e8a73d6-3309-4488-aa21-44f244eae7af">
+      <Column Name="UserTypeId" Type="System.Int32" AutoSync="OnInsert" DbType="INT NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="10" ed:ValidateRequired="true" ed:Guid="89061de6-43ad-4df3-a71c-bc3488b9cd7f" />
+      <Column Name="UserTypeName" Type="System.String" DbType="NVARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2912ae24-b05b-4988-9d93-0113c303b62b" />
+      <Association Name="UserType_UserDetail" ed:AssociationGuid="4334eaad-0efd-4f3e-89da-9c4edaba3995" Member="UserDetails" ed:Guid="53579cbb-1b77-4e81-bc21-0bc76d054363" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="UserDetail" />
+    </Type>
+  </Table>
+</Database>
